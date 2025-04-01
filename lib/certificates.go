@@ -177,7 +177,7 @@ func CreateCertificate(name string, staticip string, passphrase string, expireda
 						"export EASYRSA_REQ_ORG=%s &&"+
 						"export EASYRSA_REQ_OU=%s &&"+
 						"./genclient.sh %s %s &&"+
-						"echo 'ifconfig-push %s' > /etc/openvpn/staticclients/%s", name, tfaname, tfaissuer, expiredays, email, country, province, city, org, orgunit, name, staticip, staticip, name))
+						"echo 'ifconfig-push %s 255.255.0.0' > /etc/openvpn/staticclients/%s", name, tfaname, tfaissuer, expiredays, email, country, province, city, org, orgunit, name, staticip, staticip, name))
 			cmd.Dir = state.GlobalCfg.OVConfigPath
 			output, err := cmd.CombinedOutput()
 			if err != nil {
@@ -188,7 +188,7 @@ func CreateCertificate(name string, staticip string, passphrase string, expireda
 			return nil
 		}
 		return existsError
-	} else { // if passphrase
+	} else {                    // if passphrase
 		if !exists && !haveip { // if no exists and no ip
 			logs.Info("Password and no IP")
 			staticip = "dynamic.pool"

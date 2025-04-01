@@ -139,7 +139,7 @@ func CreateDefaultOVConfig(configDir string, ovConfigPath string, address string
 			Cipher:                   "AES-256-GCM",
 			OVConfigNcpCiphers:       "AES-256-GCM:AES-192-GCM:AES-128-GCM",
 			Auth:                     "SHA512",
-			Server:                   "server 10.0.70.0 255.255.255.0",
+			Server:                   "server 10.245.0.0 255.255.0.0",
 			Route:                    "# route 10.0.71.0 255.255.255.0",
 			PushRoute:                "# push \"route 10.0.60.0 255.255.255.0\"",
 			DNSServer1:               "# push \"dhcp-option DNS 8.8.8.8\"",
